@@ -60,8 +60,10 @@ class Feature implements FeatureInterface
      */
     protected function configureOptions(OptionsResolver $resolver)
     {
-        // @TODO Remove this call when removing the setDefaultOptions method
-        $this->setDefaultOptions($resolver);
+        if( get_class( $resolver ) == 'Symfony\Component\OptionsResolver\OptionsResolverInterface' )
+        {
+            $this->setDefaultOptions( $resolver );
+        }
     }
 
     /**
